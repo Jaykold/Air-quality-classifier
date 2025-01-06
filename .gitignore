@@ -1,0 +1,39 @@
+# Ignore log files
+*.log
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore environment variable files
+.env
+.env.local
+myenv/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore coverage reports
+coverage/
+
+# Ignore compiled files
+*.out
+*.o
+*.class
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.bak
+*.orig
+*.rej
+.ipynb_checkpoints/
+pycache/
