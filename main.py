@@ -23,9 +23,8 @@ class PredictionRequest(BaseModel):
 @app.post("/predict")
 def predict_endpoint(data: PredictionRequest):
     data_dict = data.model_dump()
-    X = preprocess_data(data_dict)
-    predictions = predict(X)
-    return {"predictions": predictions}
+    predictions = predict(data_dict)
+    return {"prediction": predictions}
 
 if __name__ == "__main__":
     import uvicorn

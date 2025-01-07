@@ -1,4 +1,4 @@
-from libraries import pickle, Union, np, List, Dict, pd
+from src.libraries import pickle, Union, np, List, Dict, pd
 
 model_path = "model/model.pkl"
 scaler_path = "model/scaler.pkl"
@@ -13,16 +13,24 @@ def load_model():
         le = pickle.load(le_file)
     return model, scaler, le
 
-def preprocess_data(data:Dict) -> Dict:
+def preprocess_data(data: Dict) -> Dict:
+    if not isinstance(data, Dict):
+        raise TypeError("Data must be a dictionary")
+    
     if 'pm10' in data.keys():
         del data['pm10']
-    return list(data.values())
+    X = list(data.values())
+   
+    return X
 
-def predict(data: np.ndarray):
+def predict(data: Dict):
+    X = preprocess_data(data)
     model, scaler, le = load_model()
-    data = scaler.transform([data])
+    
+    data = scaler.transform([X])
     y_pred = model.predict(data)
-    y_pred = le.inverse_transform([y_pred])[0]
+    y_pred = le.inverse_transform(y_pred)[0]
+
     return y_pred
 
 if __name__ == "__main__":
@@ -36,8 +44,6 @@ if __name__ == "__main__":
     "co": 1.55,
     "proximity_to_industrial_areas": 6.7,
     "population_density": 594.0}
-
-    X = preprocess_data(data)
-    print(X)
-    predictions = predict(X)
+   
+    predictions = predict(data)
     print(f"Predictions: {predictions}")
