@@ -1,4 +1,9 @@
-from src.libraries import pickle, Union, np, List, Dict, pd
+from typing import Dict
+import pickle
+
+import warnings
+warnings.filterwarnings("ignore")
+
 
 model_path = "model/model.pkl"
 scaler_path = "model/scaler.pkl"
