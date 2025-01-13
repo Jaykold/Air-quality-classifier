@@ -150,12 +150,10 @@ print('Hyperparameter tuning completed')
 
 best_model = results.sort_values(by='best_score', ascending=False).iloc[0]
 
-model_names = ['Logistic_Regression', 'Decision_Tree', 'Random_Forest', 'XGBoost', 'SVM']
-
 model = params[best_model['model_name']]['model']
 model.set_params(**best_model['best_param'])
 
-print(f"Best model is: {type(model)}\nand the parameters are: {best_model['best_param']}")
+#print(f"Best model is: {type(model)}\nand the parameters are: {best_model['best_param']}")
 
 model.fit(X_train, y_train)
 y_pred_val = model.predict(X_val)
