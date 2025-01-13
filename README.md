@@ -88,6 +88,3 @@ python test.py
 ```
 docker tag air-quality-classifier <dockerhubName/air-quality-classifier:latest>
 ```
-
-### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
